@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Version 0.0.1 Alpha
+# Version 0.0.1 Beta
 
 # cprint - Coloured print for command line python softwares.
 # Copyright (C) 2014  Artur 'hoOmE' Paiva

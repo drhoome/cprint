@@ -23,6 +23,7 @@
 from sys import version_info, platform
 from os import system
 
+# Check version of python and operating system
 if version_info[0] == 3:
     raise EnvironmentError("This version of cprint is mean to run with Python 2, please, download c3print to use with Python 3.")
 else:
@@ -105,7 +106,6 @@ def cinfo(string=""):
 # Clear the screen
 def cclear(background="default"):
     string = _cbackg("",background)
-    #system("echo -e \"%s\"" % string)
     print(string)
     system("clear")
 
@@ -122,7 +122,7 @@ def cabout():
     cprintln("<bold><yellow>cprint<default><bold> - <green>Coloured print for command line python softwares<default><bold>.")
     cprintln("<bold>Developed by Artur 'hoOmE' Paiva - <underline>dr.hoome@gmail.com<default><bold>.")
     cnewline()
-    cprintln("<bold>For more info, please visit <underline><default><bold>.")
+    cprintln("<bold>For more info, please visit <underline>https://github.com/drhoome/cprint<default><bold>.")
     cnewline()
     cprintln("<bold>This program comes with <red>ABSOLUTELY NO WARRANTY<default><bold>.")
     cprintln("<bold>This is free software, and you are welcome to redistribute it under certain conditions.")

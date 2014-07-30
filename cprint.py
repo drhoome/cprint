@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Version 0.0.1 Beta
+# Version 0.0.2 Beta
 
 # cprint - Coloured print for command line python softwares.
 # Copyright (C) 2014  Artur 'hoOmE' Paiva
@@ -20,15 +20,12 @@
 # For more info please visit https://github.com/drhoome/cprint.
 
 # Import all necessay modules
-from sys import version_info, platform
+from sys import version_info, platform,stdout
 from os import system
 
 # Check version of python and operating system
-if version_info[0] == 3:
-    raise EnvironmentError("This version of cprint is mean to run with Python 2, please, download c3print to use with Python 3.")
-else:
-    if version_info[0] < 2 or version_info[1] < 5:
-        raise EnvironmentError("Version of python too old, cprint need at least version 2.5 of Python.")
+if version_info[0] < 2 or (version_info[1] < 5 and version_info[0] == 2):
+    raise EnvironmentError("Version of python too old, cprint need at least version 2.5 of Python.")
 
 if platform.startswith("win"):
     raise EnvironmentError("cprint is designed for Unix operating systems and cannot run on Windows.")
@@ -81,14 +78,14 @@ def cprint(string,background="default"):
     string = _cbackg(string,background)
     string = _cmarkup(string)
     string += "\033[m"
-    print string,
+    stdout.write(string)
 
 # Function to print on screen with a newline
 def cprintln(string,background="default"):
     string = _cbackg(string,background)
     string = _cmarkup(string)
     string += "\033[m"
-    print(string)
+    stdout.write(string+"\n")
 
 # Print some predeterminated dialogs
 def cok(string=""):
@@ -106,16 +103,16 @@ def cinfo(string=""):
 # Clear the screen
 def cclear(background="default"):
     string = _cbackg("",background)
-    print(string)
+    stdout.write(string+"\n")
     system("clear")
 
 # Reset to default
 def creset():
-    print "\033[m",
+    stdout.write("\033[m"),
 
 # Add a new line
 def cnewline():
-    print("")
+    stdout.write("\n")
 
 # About cprint
 def cabout():

@@ -17,7 +17,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# For more info please visit .
+# For more info please visit https://github.com/drhoome/cprint.
 
 # Import all necessay modules
 from sys import version_info, platform

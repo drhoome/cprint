@@ -20,6 +20,9 @@ setup(
         author_email="dr.hoome@gmail.com",
         license="MIT",
         packages=["mprint"],
+        install_requires=[
+                "colorama"
+        ],
         include_package_data=True,
         zip_safe=False
     )

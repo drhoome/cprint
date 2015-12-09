@@ -59,6 +59,8 @@ def markup(string):
                 formatStack.reverse()
                 formatStack.remove(formatTable[tags[0]])
                 newString += "\033[0m"
+                for item in formatStack:
+                    newString += "\033[%dm" % item
                 formatStack.reverse()
             if len(colorStack) is 0 or len(bgcolorStack) is 0 or len(formatStack) is 0:
                 raise SyntaxError("Unable to close tag %s" % tags[0])

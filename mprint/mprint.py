@@ -51,42 +51,29 @@ def markup(string):
         if tags[0][0] == '/':
             tags[0] = tags[0][1:]
             if tags[0] == 'color':
-                try:
-                    colorStack.pop()
-                except:
-                    raise SyntaxError("Error while closing color tag.")
+                colorStack.pop()
             elif tags[0] == 'bgcolor':
-                try:
-                    bgcolorStack.pop()
-                except:
-                    raise SyntaxError("Error while closing bgcolor tag.")
+                bgcolorStack.pop()
             else:
                 formatStack.reverse()
-                try:
-                    formatStack.remove(formatTable[tags[0]])
-                except:
-                    raise SyntaxError("Unable to close tag: %s" % tags[0])
+                formatStack.remove(formatTable[tags[0]])
                 formatStack.reverse()
+            if len(colorStack) is 0 or len(bgcolorStack) is 0 or len(formatStack) is 0:
+                raise SyntaxError("Unable to close tag %s" % tags[0])
         else:
-            if tags[0] == 'color':
-                if len(tags) is 1:
-                    tags[1] = "default"
-                try:
+            try:
+                if tags[0] == 'color':
+                    if len(tags) is 1:
+                        tags[1] = "default"
                     colorStack.append(colorTable[tags[1]])
-                except:
-                    raise SyntaxError("Invalid Attribute: %s" % tags[1])
-            elif tags[0] == 'bgcolor':
-                if len(tags) is 1:
-                    tags[1] = "default"
-                try:
+                elif tags[0] == 'bgcolor':
+                    if len(tags) is 1:
+                        tags[1] = "default"
                     bgcolorStack.append(colorTable[tags[1]])
-                except:
-                    raise SyntaxError("Invalid Attribute: %s" % tags[1])
-            else:
-                try:
+                else:
                     formatStack.append(formatTable[tags[0]])
-                except:
-                    raise SyntaxError("Invalid tag: %s" % tags[1])
+            except:
+                raise SyntaxError("Invalid tag or argument: %s %s" % (tags[0], tags[1]))
         newString = string.split("<", 1)[0]
         newString += "\033[%d;%d;%dm" % (
                                         formatStack[-1],

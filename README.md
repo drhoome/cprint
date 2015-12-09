@@ -1,6 +1,6 @@
 # mprint
 
-!()[http://i.imgur.com/OKFsapl.jpg]
+![](http://i.imgur.com/OKFsapl.jpg)
 
 mprint is an easy way to use Markup Tags to format your text, 
 you can set colors, bold, italic. All with simple markup tags.

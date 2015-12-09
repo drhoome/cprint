@@ -1,8 +1,8 @@
 # mprint
 
-!()[http://i.imgur.com/OKFsapl.jpg]
+![](http://i.imgur.com/OKFsapl.jpg)
 
-mprint is an easy way to use Markup Tags to format your text, 
+mprint stands for **M**arkup **Print**, is an easy way to use Markup Tags to format your text, 
 you can set colors, bold, italic. All with simple markup tags.
 
 - Simple to use, you can just use markup tags and format your text.
@@ -13,6 +13,7 @@ you can set colors, bold, italic. All with simple markup tags.
 - Easy to understand documentation trought [wiki] (https://github.com/h0m3/python-mprint/wiki).
 - Can nest tags, you can mix formatting and colors
 - Use own Markup Engine, lighter and no additional dependencies for processing markup.
+- Easy to personalize, you can easly add new color or create your own tags.
 
 # Try it now
 

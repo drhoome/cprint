@@ -1,10 +1,19 @@
-# ![cprint](https://dl.dropboxusercontent.com/u/6867350/cprint.png)
-Coloured print for command line python softwares.
+# mprint
 
-cprint is a small python module that can print coloured text into a Unix console, userful for console logging and text-based applications.
+!()[http://i.imgur.com/OKFsapl.jpg]
 
-Vist our [Wiki](https://github.com/drhoome/cprint/wiki) for more information and documentation
+mprint is an easy way to use Markup Tags to format your text, 
+you can set colors, bold, italic. All with simple markup tags.
 
-Download [the package](https://github.com/drhoome/cprint/archive/master.zip) with our scripts
+- Simple to use, you can just use markup tags and format your text.
+- Uses ANSI Escape Sentences, its compatible with almost everything, including windows.
+- Lightweight, uses less processing than alternatives like curses
+- Support common formatting like italic, bold, underscore
+- Support colors and bold colors
+- Easy to understand documentation trought [wiki] (https://github.com/h0m3/python-mprint/wiki).
+- Can nest tags, you can mix formatting and colors
+- Use own Markup Engine, lighter and no additional dependencies for processing markup.
 
-> cprint is free software, and you are welcome to redistribute it under [GPLv3](https://www.gnu.org/licenses/gpl.html) conditions.
+# Try it now
+
+Go right ahead, visit our [wiki] (https://github.com/h0m3/python-mprint/wiki), clone our project and get started.

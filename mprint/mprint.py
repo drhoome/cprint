@@ -82,7 +82,7 @@ def markup(string):
                                         )
         newString += string.split(">", 1)[1]
         string = newString
-    return newString
+    return string
 
 
 # Print markup characters to screen

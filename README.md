@@ -2,7 +2,7 @@
 
 ![](http://i.imgur.com/OKFsapl.jpg)
 
-mprint stands for Markup Print, is an easy way to use Markup Tags to format your text, 
+mprint stands for **M**arkup **Print**, is an easy way to use Markup Tags to format your text, 
 you can set colors, bold, italic. All with simple markup tags.
 
 - Simple to use, you can just use markup tags and format your text.

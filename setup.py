@@ -5,7 +5,7 @@ setup(
         version="0.1",
         description="Use tags to print markup text on console screen",
         classifiers=[
-            "Development Status :: 2 - Pre-Alpha",
+            "Development Status :: 4 - Beta",
             "Intended Audience :: Developers",
             "License :: OSI Approved :: MIT License",
             "Natural Language :: English",

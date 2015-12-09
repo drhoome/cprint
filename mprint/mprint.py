@@ -34,7 +34,7 @@ formatTable = {
         "normal": 0,
         "bold": 1,
         "italic": 3,
-        "undescore": 4,
+        "underscore": 4,
         "blink": 5,
         "negative": 6
     }

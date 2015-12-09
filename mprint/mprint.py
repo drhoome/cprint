@@ -47,6 +47,7 @@ def markup(string):
     formatStack = [0]
 
     while '<' in string and '>' in string:
+        newString = string.split("<", 1)[0]
         tags = string.split('<', 1)[1].split('>', 1)[0].split()
         if tags[0][0] == '/':
             tags[0] = tags[0][1:]
@@ -57,6 +58,7 @@ def markup(string):
             else:
                 formatStack.reverse()
                 formatStack.remove(formatTable[tags[0]])
+                newString += "\033[0m"
                 formatStack.reverse()
             if len(colorStack) is 0 or len(bgcolorStack) is 0 or len(formatStack) is 0:
                 raise SyntaxError("Unable to close tag %s" % tags[0])
@@ -74,12 +76,11 @@ def markup(string):
                     formatStack.append(formatTable[tags[0]])
             except:
                 raise SyntaxError("Invalid tag or argument: %s %s" % (tags[0], tags[1]))
-        newString = string.split("<", 1)[0]
         newString += "\033[%d;%d;%dm" % (
-                                        formatStack[-1],
-                                        colorStack[-1]+30,
-                                        bgcolorStack[-1]+40
-                                        )
+                                    formatStack[-1],
+                                    colorStack[-1]+30,
+                                    bgcolorStack[-1]+40
+                                    )
         newString += string.split(">", 1)[1]
         string = newString
     return string

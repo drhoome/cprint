@@ -4,8 +4,8 @@
 # Under the MIT Licese
 #
 
-# Import sys.stdout.write to write on screen
-from sys import stdout
+# Import future print to Python 2.7 compatbility
+from __future__ import print_function
 
 # Imports colorama for Windows based ASCII output
 try:
@@ -26,7 +26,10 @@ colorTable = {
         "magenta": 5,
         "cyan": 6,
         "white": 7,
-        "default": 9
+        "default": 9,
+        "error": 1,
+        "warning": 3,
+        "info": 4
     }
 
 # ASCII Format Table
@@ -36,7 +39,10 @@ formatTable = {
         "italic": 3,
         "underscore": 4,
         "blink": 5,
-        "negative": 6
+        "negative": 6,
+        "b": 1,
+        "i": 3,
+        "u": 4
     }
 
 
@@ -92,21 +98,26 @@ def markup(string):
 
 
 # Print markup characters to screen
-def mprint(string):
-        stdout.write(markup(string))
+def mprint(string, color="default", symbol=""):
+    if symbol != "":
+        symbol = "<bold>%s</bold> " % symbol
+    print(markup("<color %s>%s%s</color>" % (color, symbol, string)), end="")
 
 
 # Same as 'mprint' but add a new line at the end
-def mprintln(string):
-    mprint(string)
-    stdout.write('\n')
+def mprintln(string=None, color="default", symbol=""):
+    if string is None:
+        print()
+    else:
+        mprint(string, color, symbol)
+        print()
 
 
 # Clear the screen
-def mclear():
-    stdout.write('\033[2J')
+def mclear(bgcolor="default"):
+    print("\033[%sm\033[2J" % str(colorTable[bgcolor]+40), end="")
 
 
 # Reset the color attributes
 def mreset():
-    stdout.write('\033[0m')
+    print('\033[0m', end="")

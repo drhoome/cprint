@@ -51,21 +51,23 @@ def markup(string):
         tags = string.split('<', 1)[1].split('>', 1)[0].split()
         if tags[0][0] == '/':
             tags[0] = tags[0][1:]
-            if tags[0] == 'color':
+            if tags[0] == 'color' and len(colorStack) > 1:
                 colorStack.pop()
-            elif tags[0] == 'bgcolor':
+            elif tags[0] == 'bgcolor' and len(bgcolorStack) > 1:
                 bgcolorStack.pop()
-            else:
+            elif len(formatStack) > 1:
                 formatStack.reverse()
                 formatStack.remove(formatTable[tags[0]])
                 newString += "\033[0m"
                 for item in formatStack:
                     newString += "\033[%dm" % item
                 formatStack.reverse()
-            if len(colorStack) is 0 or len(bgcolorStack) is 0 or len(formatStack) is 0:
-                raise SyntaxError("Unable to close tag %s" % tags[0])
         else:
             try:
+                if tags[0] == 'br':
+                    newString += "\n"
+                elif tags[0] == "tab":
+                    newString += "\t"
                 if tags[0] == 'color':
                     if len(tags) is 1:
                         tags[1] = "default"
@@ -75,9 +77,10 @@ def markup(string):
                         tags[1] = "default"
                     bgcolorStack.append(colorTable[tags[1]])
                 else:
-                    formatStack.append(formatTable[tags[0]])
+                    if tags[0] in formatTable:
+                        formatStack.append(formatTable[tags[0]])
             except:
-                raise SyntaxError("Invalid tag or argument: %s %s" % (tags[0], tags[1]))
+                raise SyntaxError("Invalid argument: %s" % tags[1])
         newString += "\033[%d;%d;%dm" % (
                                     formatStack[-1],
                                     colorStack[-1]+30,

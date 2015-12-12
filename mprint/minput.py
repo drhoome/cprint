@@ -1,7 +1,7 @@
 # Add imput functionalities
 
 # Import mprint
-from mprint import mprint, mprintln, colorTable, formatTable
+from mprint import mprint, colorTable, formatTable
 
 # Fixing raw_input and input problems in Python 3
 try:
@@ -18,10 +18,12 @@ def mquestion(text, yes=True):
 
     mprint("%s <bold>[%s]</bold> " % (text, yesno))
     result = input()
-    if (result == "" and yes) or (result.lower().startswith("y")):
+    if (result == "" and yes) or result.lower().startswith("y"):
         return True
-    else:
+    elif (result == "" and yes is False) or result.lower.startswith("n"):
         return False
+    else:
+        raise ValueError("Invalid value returned from input.")
 
 
 # Press any key
@@ -38,8 +40,14 @@ def minput(text=""):
     return result
 
 
-# Function to detect if a variable is a number
+# Deprecated is_number function
 def is_number(number=""):
+    raise DeprecationWarning("Use mis_number instead.")
+    return mis_number(number)
+
+
+# Function to detect if a variable is a number
+def mis_number(number):
     try:
         float(number)
         return True
@@ -48,24 +56,22 @@ def is_number(number=""):
 
 
 # Numeric input
-def mnum_input(text="", error="The value is not a number"):
+def mnum_input(text=""):
     mprint("<default>%s<bold>" % text)
     result = input()
     mprint("<default>")
-    if is_number(result):
-        return result
+    if mis_number(result):
+        return float(result)
     else:
-        mprintln(error, "error")
-        return mnum_input(text, error)
+        raise ValueError("Input is not numeric")
 
 
 # Email input
-def memail_input(text="", error="This doesn't look like an email"):
+def memail_input(text=""):
     mprint("<default>%s<bold>" % text)
     result = input()
     mprint("<default>")
     if "@" in result and "." in result:
         return result
     else:
-        mprintln(error, "error")
-        return memail_input(text, error)
+        raise ValueError("Input is not email")

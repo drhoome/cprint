@@ -2,13 +2,16 @@ from setuptools import setup
 
 setup(
         name="mprint",
-        version="0.1",
+        version="0.11",
         description="Use tags to print markup text on console screen",
         classifiers=[
-            "Development Status :: 2 - Pre-Alpha",
+            "Development Status :: 4 - Beta",
             "Intended Audience :: Developers",
             "License :: OSI Approved :: MIT License",
             "Natural Language :: English",
+            "Operating System :: Microsoft",
+            "Operating System :: POSIX",
+            "Operating System :: Unix",
             "Programming Language :: Python :: 2.7",
             "Programming Language :: Python :: 3",
             "Topic :: Software Development :: User Interfaces",

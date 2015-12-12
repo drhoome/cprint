@@ -54,7 +54,7 @@ def markup(string):
 
     while '<' in string and '>' in string:
         newString = string.split("<", 1)[0]
-        tags = string.split('<', 1)[1].split('>', 1)[0].split()
+        tags = string.lower().split('<', 1)[1].split('>', 1)[0].split()
         if tags[0][0] == '/':
             tags[0] = tags[0][1:]
             if tags[0] == 'color' and len(colorStack) > 1:

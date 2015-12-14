@@ -20,10 +20,10 @@ def mquestion(text, yes=True):
     result = input()
     if (result == "" and yes) or result.lower().startswith("y"):
         return True
-    elif (result == "" and yes is False) or result.lower.startswith("n"):
+    elif (result == "" and yes is False) or result.lower().startswith("n"):
         return False
     else:
-        raise ValueError("Invalid value returned from input.")
+        raise ValueError("Invalid value returned from input: %s" % result)
 
 
 # Press any key
@@ -42,7 +42,8 @@ def minput(text=""):
 
 # Deprecated is_number function
 def is_number(number=""):
-    raise DeprecationWarning("Use mis_number instead.")
+    import warnings
+    warnings.warn("Use mis_number instead.")
     return mis_number(number)
 
 

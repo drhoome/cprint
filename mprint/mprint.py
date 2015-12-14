@@ -17,7 +17,7 @@ try:
 except ImportError as exception:
     from sys import platform
     if platform.startswith("win"):
-        raise exception
+        raise ImportError("Missing colorama module")
 
 # ASCII Color Table
 colorTable = {
@@ -51,9 +51,9 @@ formatTable = {
 
 # Export markup text to ASCII characters for language
 def markup(string):
-    colorStack = [9]
-    bgcolorStack = [9]
-    formatStack = [0]
+    colorStack = [colorTable["default"]]
+    bgcolorStack = [colorTable["default"]]
+    formatStack = [formatTable["normal"]]
 
     while '<' in string and '>' in string:
         newString = string.split("<", 1)[0]
@@ -79,11 +79,11 @@ def markup(string):
                     newString += "\t"
                 if tags[0] == 'color':
                     if len(tags) is 1:
-                        tags[1] = "default"
+                        tags.append("default")
                     colorStack.append(colorTable[tags[1]])
                 elif tags[0] == 'bgcolor':
                     if len(tags) is 1:
-                        tags[1] = "default"
+                        tags.append("default")
                     bgcolorStack.append(colorTable[tags[1]])
                 else:
                     if tags[0] in formatTable:

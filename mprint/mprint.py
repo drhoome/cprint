@@ -101,18 +101,17 @@ def markup(string):
 
 
 # Print markup characters to screen
-def mprint(string, output=stdout, color="default", symbol=""):
-    if symbol != "":
-        symbol = "<bold>%s</bold> " % symbol
-    print(markup("<color %s>%s%s</color>" % (color, symbol, string)), end="")
+def mprint(string, output=stdout, color="default"):
+    string = markup("<color %s>%s</color>" % (color, string))
+    print(string, end="", file=output)
 
 
 # Same as 'mprint' but add a new line at the end
-def mprintln(string=None, output=stdout, color="default", symbol=""):
+def mprintln(string=None, output=stdout, color="default"):
     if string is None:
         print()
     else:
-        mprint(string, color, symbol)
+        mprint(string, output, color)
         print()
 
 

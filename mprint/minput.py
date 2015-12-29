@@ -1,7 +1,7 @@
 # Add imput functionalities
 
 # Import mprint
-from mprint import mprint, colorTable, formatTable
+from mprint.mprint import mprint, colorTable, formatTable
 
 # Fixing raw_input and input problems in Python 3
 try:

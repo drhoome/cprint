@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
         name="mprint",
-        version="0.21",
+        version="0.22",
         description="Use tags to print markup text on console screen",
         classifiers=[
             "Development Status :: 4 - Beta",
